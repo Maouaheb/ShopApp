@@ -22,17 +22,15 @@ public class PaymentPaypal extends Paiment {
 		Label pwd = new Label(" password of paypal  account");
 		pwd.setId("label");
 		TextField pwdT = new TextField();
-		gridPane.add(info, 0, l+2);
+		gridPane.add(info, 0, l + 2);
 		gridPane.add(email, 0, l + 5);
 		gridPane.add(emailT, 1, l + 5);
 		gridPane.add(pwd, 0, l + 8);
 		gridPane.add(pwdT, 1, l + 8);
-		
+
 		Button confirm = new Button("Confirm ");
 		confirm.setId("btnconfirm");
 		gridPane.add(confirm, 0, l + 10);
 	}
-
-
 
 }

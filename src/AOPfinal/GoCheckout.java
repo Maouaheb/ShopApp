@@ -32,12 +32,13 @@ public class GoCheckout extends Application {
 	Paiment paimentStrategy;
 	public User user;
 	int year;
-	public GoCheckout(Panier panier, ArrayList<String> files,User user) {
+
+	public GoCheckout(Panier panier, ArrayList<String> files, User user) {
 		this.panier = panier;
 		this.files = files;
 		products = new ArrayList<Product>();
-		this.user=user;
-		this.year=user.getCalendar().get(Calendar.YEAR);
+		this.user = user;
+		this.year = user.getCalendar().get(Calendar.YEAR);
 	}
 
 	public float prixtotal() {
@@ -89,8 +90,8 @@ public class GoCheckout extends Application {
 		paypal.setId("checkbox");
 		gridPane.add(card, 7, products.size() + 1);
 		gridPane.add(paypal, 8, products.size() + 1);
-		if(year >2002) {
-			isYoung(gridPane,products.size() + 2);
+		if (year > 2002) {
+			isYoung(gridPane, products.size() + 2);
 			card.setDisable(true);
 			paypal.setDisable(true);
 		}
@@ -100,8 +101,8 @@ public class GoCheckout extends Application {
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 
-				paimentStrategy=new PaymentCard();
-				paimentStrategy.pay(gridPane,products.size() + 2);
+				paimentStrategy = new PaymentCard();
+				paimentStrategy.pay(gridPane, products.size() + 2);
 			}
 		});
 		paypal.setOnAction(new EventHandler<ActionEvent>() {
@@ -109,12 +110,12 @@ public class GoCheckout extends Application {
 			@Override
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				paimentStrategy=new PaymentPaypal();
-				paimentStrategy.pay(gridPane,products.size() + 2);
+				paimentStrategy = new PaymentPaypal();
+				paimentStrategy.pay(gridPane, products.size() + 2);
 
 			}
 		});
-		Label basket=new Label("Basket :");
+		Label basket = new Label("Basket :");
 		basket.setId("labelProduct");
 		Text info = new Text(" Card Information");
 		info.setId("textCard");
@@ -131,7 +132,7 @@ public class GoCheckout extends Application {
 			gridPane.add(basket, 0, 1);
 			Label prix = new Label("total price " + panier.paiment());
 			prix.setId("labelProduct");
-			gridPane.add(prix, 4, products.size() );
+			gridPane.add(prix, 4, products.size());
 
 		} else {
 			Label notext = new Label("Baskt is empty !");
@@ -185,17 +186,17 @@ public class GoCheckout extends Application {
 
 	}
 
-	public void isYoung(GridPane gridPane,int l) {
+	public void isYoung(GridPane gridPane, int l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void paimentCard(GridPane gridPane, int l) {
-		
+
 	}
 
 	public void paimentPaypal(GridPane gridPane, int l) {
-		
+
 	}
 
 }

@@ -1,4 +1,5 @@
 package AOPfinal;
+
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
@@ -16,75 +17,76 @@ import javafx.stage.Stage;
 
 public class ListList extends Application {
 
-    final ListView listView = new ListView();
-    @Override
-    public void start(Stage primaryStage) {
+	final ListView listView = new ListView();
 
-        List<Hyperlink> links = new ArrayList<>();
+	@Override
+	public void start(Stage primaryStage) {
 
-        AnchorPane pane = new AnchorPane();
-        VBox vBox = new VBox();
-        final Hyperlink link = new Hyperlink("http://blog.professional-webworkx.de");
-        Hyperlink link2= new Hyperlink("http://www.stackoverflow.com");
+		List<Hyperlink> links = new ArrayList<>();
 
-        links.add(link);
-        links.add(link2);
+		AnchorPane pane = new AnchorPane();
+		VBox vBox = new VBox();
+		final Hyperlink link = new Hyperlink("http://blog.professional-webworkx.de");
+		Hyperlink link2 = new Hyperlink("http://www.stackoverflow.com");
 
-        for(final Hyperlink hyperlink : links) {
-            hyperlink.setOnAction(new EventHandler<ActionEvent>() {
+		links.add(link);
+		links.add(link2);
 
-                @Override
-                public void handle(ActionEvent t) {
-                    getHostServices().showDocument(hyperlink.getText());
-                }
-            });
-        }
+		for (final Hyperlink hyperlink : links) {
+			hyperlink.setOnAction(new EventHandler<ActionEvent>() {
 
-        listView.getItems().addAll(links);
-        HBox hBox = new HBox();
-        final TextField urlField = new TextField();
-        Button b = new Button("Add Links");
-        hBox.getChildren().addAll(b, urlField);
+				@Override
+				public void handle(ActionEvent t) {
+					getHostServices().showDocument(hyperlink.getText());
+				}
+			});
+		}
 
-        b.setOnAction(new EventHandler<ActionEvent>() {
+		listView.getItems().addAll(links);
+		HBox hBox = new HBox();
+		final TextField urlField = new TextField();
+		Button b = new Button("Add Links");
+		hBox.getChildren().addAll(b, urlField);
 
-            @Override
-            public void handle(ActionEvent t) {
-                addLink(urlField.getText().trim());
-                urlField.clear();
-            }
-        });
-        vBox.getChildren().add(hBox);
-        vBox.getChildren().add(listView);
-        pane.getChildren().add(vBox);
-        Scene scene = new Scene(pane, 800, 600);
-        primaryStage.setTitle("Hello World!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
+		b.setOnAction(new EventHandler<ActionEvent>() {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
+			@Override
+			public void handle(ActionEvent t) {
+				addLink(urlField.getText().trim());
+				urlField.clear();
+			}
+		});
+		vBox.getChildren().add(hBox);
+		vBox.getChildren().add(listView);
+		pane.getChildren().add(vBox);
+		Scene scene = new Scene(pane, 800, 600);
+		primaryStage.setTitle("Hello World!");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
 
-    private void addLink(final String url) {
-        final Hyperlink link = new Hyperlink(url);
-        link.setOnAction(new EventHandler<ActionEvent>() {
+	/**
+	 * @param args the command line arguments
+	 */
+	public static void main(String[] args) {
+		launch(args);
+	}
 
-            @Override
-            public void handle(ActionEvent t) {
-                getHostServices().showDocument(link.getText());
-                //openBrowser(link.getText());
-            }
+	private void addLink(final String url) {
+		final Hyperlink link = new Hyperlink(url);
+		link.setOnAction(new EventHandler<ActionEvent>() {
 
-        });
-        listView.getItems().add(link);
-    }
+			@Override
+			public void handle(ActionEvent t) {
+				getHostServices().showDocument(link.getText());
+				// openBrowser(link.getText());
+			}
 
-    private void openBrowser(final String url) {
-        getHostServices().showDocument(url);
-    }
+		});
+		listView.getItems().add(link);
+	}
+
+	private void openBrowser(final String url) {
+		getHostServices().showDocument(url);
+	}
 }

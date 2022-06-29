@@ -38,7 +38,8 @@ public class ShopLogin extends Application {
 	public static String file;
 	public static String fileSize;
 	public User user;
-	ArrayList<String>files;
+	ArrayList<String> files;
+
 	public String getFile() {
 		return file;
 	}
@@ -48,15 +49,15 @@ public class ShopLogin extends Application {
 	}
 
 	public ShopLogin() {
-		file=null;
-		files=new ArrayList<String>();
+		file = null;
+		files = new ArrayList<String>();
 	}
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		primaryStage.setTitle("Login");
-        primaryStage.getIcons().add(new Image("logo.jpg"));
+		primaryStage.getIcons().add(new Image("logo.jpg"));
 
 		BorderPane bp = new BorderPane();
 		bp.setPadding(new Insets(10, 50, 50, 50));
@@ -76,12 +77,12 @@ public class ShopLogin extends Application {
 		final TextField txtUserName = new TextField();
 		Label lblPassword = new Label("Password");
 		final PasswordField pf = new PasswordField();
-        ImageView imageDecline1 = new ImageView("fleche.png");
-		Button btnLogin = new Button("Login",imageDecline1);
+		ImageView imageDecline1 = new ImageView("fleche.png");
+		Button btnLogin = new Button("Login", imageDecline1);
 		imageDecline1.setFitHeight(20);
 		imageDecline1.setFitWidth(20);
 		btnLogin.setContentDisplay(ContentDisplay.RIGHT);
-		
+
 		final Label lblMessage = new Label();
 		lblUserName.setId("label");
 		lblPassword.setId("label");
@@ -106,26 +107,27 @@ public class ShopLogin extends Application {
 		// Adding text and DropShadow effect to it
 		Text text = new Text("Login to your account");
 		text.setId("text");
-		// Adding text to HBox 
+		// Adding text to HBox
 		hb.getChildren().add(text);
 		// the Logo of home page
-		 ImageView  imageView = new ImageView("home.png");
-	  // ImageView   = new ImageView(getClass().getResource("../home.png").toExternalForm());
-			Button button=new Button("",imageView);
-			button.setContentDisplay(ContentDisplay.LEFT);
-	    imageView.setFitHeight(30);
-	    imageView.setFitWidth(60);
-	    button.setId("buttonImage");
-	    // adding logo to HBox
-	    hb.getChildren().add(button);
-	
-	    // set action for Logo image to go back to the welcome screen
-	    button.setOnAction(new EventHandler<ActionEvent>() {
-			
+		ImageView imageView = new ImageView("home.png");
+		// ImageView = new
+		// ImageView(getClass().getResource("../home.png").toExternalForm());
+		Button button = new Button("", imageView);
+		button.setContentDisplay(ContentDisplay.LEFT);
+		imageView.setFitHeight(30);
+		imageView.setFitWidth(60);
+		button.setId("buttonImage");
+		// adding logo to HBox
+		hb.getChildren().add(button);
+
+		// set action for Logo image to go back to the welcome screen
+		button.setOnAction(new EventHandler<ActionEvent>() {
+
 			@Override
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				WelcomeScreen welcome=new WelcomeScreen();
+				WelcomeScreen welcome = new WelcomeScreen();
 				try {
 					welcome.start(new Stage());
 					primaryStage.hide();
@@ -145,29 +147,28 @@ public class ShopLogin extends Application {
 		btnLogin.setOnAction(new EventHandler() {
 			@Override
 			public void handle(Event event) {
-				 checkUser = txtUserName.getText().toString();
+				checkUser = txtUserName.getText().toString();
 				checkPw = pf.getText().toString();
-				ConnectionLogIn c=new ConnectionLogIn();
-				String handicap="";
-				user=new User();
-				boolean result=c.getConnection(checkUser, checkPw, lblMessage, user);					
+				ConnectionLogIn c = new ConnectionLogIn();
+				String handicap = "";
+				user = new User();
+				boolean result = c.getConnection(checkUser, checkPw, lblMessage, user);
 				// myopic
-				if(user.isHandicap() == false) {
+				if (user.isHandicap() == false) {
 					files.add("login.css");
-				}
-				else {
-					if(user.isPresbytie()) {
+				} else {
+					if (user.isPresbytie()) {
 						files.add(User.filePresbytie);
 					}
-					if(user.isColorblind()) {
+					if (user.isColorblind()) {
 						files.add(User.fileColorblind);
 					}
 				}
-				
+
 				txtUserName.setText("");
 				pf.setText("");
-				if(result==true) {
-					PagePrincipale shop=new PagePrincipale(files,user);
+				if (result == true) {
+					PagePrincipale shop = new PagePrincipale(files, user);
 					try {
 						shop.start(new Stage());
 					} catch (Exception e) {
@@ -178,10 +179,9 @@ public class ShopLogin extends Application {
 				}
 			}
 
-			
 		});
 		// Add HBox and GridPane layout to BorderPane Layout
-		
+
 		bp.setTop(hb);
 		bp.setCenter(gridPane);
 		// Adding BorderPane to the scene and loading CSS
@@ -194,8 +194,4 @@ public class ShopLogin extends Application {
 
 	}
 
-	
-		
-	}
-
-
+}

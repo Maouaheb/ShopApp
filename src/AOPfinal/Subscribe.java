@@ -69,7 +69,7 @@ public class Subscribe extends Application {
 		listView.getItems().add("normal");
 		listView.setValue("normal");
 		Label choix = new Label("Kind of Disability");
-		 // css part
+		// css part
 		lblUserName.setId("label");
 		lblPassword.setId("label");
 		lblconfirmPassword.setId("label");
@@ -166,12 +166,12 @@ public class Subscribe extends Application {
 		// Adding text to HBox
 		hb.getChildren().add(text);
 		// the Logo of home page
-		ImageView  imageView = new ImageView("home.png");
-		Button button=new Button("",imageView);
+		ImageView imageView = new ImageView("home.png");
+		Button button = new Button("", imageView);
 		button.setContentDisplay(ContentDisplay.LEFT);
 		imageView.setFitHeight(30);
 		imageView.setFitWidth(60);
-		button.setId("buttonImage");		    
+		button.setId("buttonImage");
 		// adding logo to HBox
 		hb.getChildren().add(button);
 		HBox.setMargin(button, new Insets(10, 10, 10, 400));

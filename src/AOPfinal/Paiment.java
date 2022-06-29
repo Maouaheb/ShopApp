@@ -6,7 +6,7 @@ public class Paiment {
 
 	public void pay(GridPane gridPane, int l) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

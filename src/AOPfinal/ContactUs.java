@@ -1,4 +1,5 @@
 package AOPfinal;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -27,7 +28,7 @@ public class ContactUs extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		primaryStage.setTitle("Contact");
-        primaryStage.getIcons().add(new Image("logo.jpg"));
+		primaryStage.getIcons().add(new Image("logo.jpg"));
 
 		BorderPane bp = new BorderPane();
 		bp.setPadding(new Insets(10, 50, 50, 50));
@@ -35,7 +36,7 @@ public class ContactUs extends Application {
 		// Adding HBox
 		HBox hb = new HBox();
 		hb.setPadding(new Insets(20, 20, 20, 30));
-		
+
 		// Adding GridPane
 		GridPane gridPane = new GridPane();
 		gridPane.setPadding(new Insets(20, 20, 20, 20));
@@ -51,14 +52,14 @@ public class ContactUs extends Application {
 		address.setId("infoProduct");
 		// photos for each information
 		ImageView phone = new ImageView(getClass().getResource("../phone.jpg").toExternalForm());
-	    phone.setFitHeight(15);
-	    phone.setFitWidth(15);
-	    ImageView mailSymbol = new ImageView(getClass().getResource("../email.png").toExternalForm());
-	    mailSymbol.setFitHeight(15);
-	    mailSymbol.setFitWidth(15);
-	    ImageView gps = new ImageView(getClass().getResource("../address.png").toExternalForm());
-	    gps.setFitHeight(15);
-	    gps.setFitWidth(15);
+		phone.setFitHeight(15);
+		phone.setFitWidth(15);
+		ImageView mailSymbol = new ImageView(getClass().getResource("../email.png").toExternalForm());
+		mailSymbol.setFitHeight(15);
+		mailSymbol.setFitWidth(15);
+		ImageView gps = new ImageView(getClass().getResource("../address.png").toExternalForm());
+		gps.setFitHeight(15);
+		gps.setFitWidth(15);
 		// Adding Nodes to GridPane layout
 		gridPane.add(phone, 0, 0);
 		gridPane.add(telephone, 1, 0);
@@ -66,7 +67,6 @@ public class ContactUs extends Application {
 		gridPane.add(email, 1, 1);
 		gridPane.add(gps, 0, 2);
 		gridPane.add(address, 1, 2);
-
 
 		// Reflection for gridPane
 		Reflection r = new Reflection();
@@ -81,24 +81,24 @@ public class ContactUs extends Application {
 		// Adding text and DropShadow effect to it
 		Text text = new Text("Meet Us");
 		text.setId("text");
-		// Adding text to HBox 
+		// Adding text to HBox
 		hb.getChildren().add(text);
 		// the Logo of home page
-		ImageView  imageView = new ImageView("home.png");
-		Button button=new Button("",imageView);
+		ImageView imageView = new ImageView("home.png");
+		Button button = new Button("", imageView);
 		button.setContentDisplay(ContentDisplay.LEFT);
 		imageView.setFitHeight(30);
 		imageView.setFitWidth(60);
-		button.setId("buttonImage");		    
+		button.setId("buttonImage");
 		// adding logo to HBox
-	    hb.getChildren().add(button);
-	    // set action for Logo image to go back to the welcome screen
-	    button.setOnAction(new EventHandler<ActionEvent>() {
-			
+		hb.getChildren().add(button);
+		// set action for Logo image to go back to the welcome screen
+		button.setOnAction(new EventHandler<ActionEvent>() {
+
 			@Override
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-				WelcomeScreen welcome=new WelcomeScreen();
+				WelcomeScreen welcome = new WelcomeScreen();
 				try {
 					welcome.start(new Stage());
 					primaryStage.hide();
@@ -109,7 +109,7 @@ public class ContactUs extends Application {
 				}
 			}
 		});
-	    bp.setId("bp");
+		bp.setId("bp");
 		gridPane.setId("root");
 		bp.setTop(hb);
 		bp.setCenter(gridPane);

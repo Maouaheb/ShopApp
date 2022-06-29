@@ -1,4 +1,5 @@
 package AOPfinal;
+
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -26,13 +27,14 @@ import javafx.stage.Stage;
 public class DetailedProduct extends Application {
 	Product product;
 	Panier panier;
-	ArrayList<String>  files;
+	ArrayList<String> files;
 	public User user;
-	public DetailedProduct(Product product, ArrayList<String> files, Panier panier,User user) {
+
+	public DetailedProduct(Product product, ArrayList<String> files, Panier panier, User user) {
 		this.product = product;
-		this.files=files;
-		this.panier=panier;
-		this.user=user;
+		this.files = files;
+		this.panier = panier;
+		this.user = user;
 	}
 
 	@Override
@@ -74,81 +76,82 @@ public class DetailedProduct extends Application {
 		bp.setTop(hb);
 		bp.setCenter(gridPane);
 		// adding information of the product
-		 ImageView imageView = new ImageView(getClass().getResource("../"+product.getImage()).toExternalForm());
-		    imageView.setFitHeight(40);
-		    imageView.setFitWidth(40);
-		    gridPane.setAlignment(Pos.CENTER);
-		    gridPane.add(imageView, 2, 0);
-		    Label nameProduct = new Label("Name ");
-			Label brandProduct = new Label("Brand ");
-			Label priceProduct = new Label("Price ");
-			Label quantityProduct = new Label("Quantity ");
-			nameProduct.setId("labelProduct");
-			brandProduct.setId("labelProduct");
-			priceProduct.setId("labelProduct");
-			quantityProduct.setId("labelProduct"); 
-			gridPane.add(nameProduct, 0, 2);
-			gridPane.add(brandProduct, 1, 2);
-			gridPane.add(priceProduct, 2, 2);
-			gridPane.add(quantityProduct, 3, 2);
-			Label pname=new Label(product.getName());
-			gridPane.add(pname, 0,5);
-			Label pbrand=new Label(product.getBrand());
-			gridPane.add(pbrand, 1,5);
-			Label price=new Label(""+product.getPrice());
-			gridPane.add(price, 2,5);
-			Label quantity=new Label(""+product.getQuantity());
-			gridPane.add(quantity, 3,5);
-			pname.setId("infoProduct");
-			pbrand.setId("infoProduct");
-			quantity.setId("infoProduct");
-			price.setId("infoProduct");
-			
-			// ajouter panier 
-			Button achat=new Button("add to basket");
-			achat.setId("buttonOrange");
-			gridPane.add(achat, 1, 8);
-			Button pay=new Button("Go to checkout");
-			pay.setId("buttonOrange");
-			gridPane.add(pay, 2, 8);
-			// add product into basket
-			achat.setOnAction(new EventHandler<ActionEvent>() {
-				
-				@Override
-				public void handle(ActionEvent arg0) {
-					// TODO Auto-generated method stub
-					achat.setDisable(true);
-					achat.setId("disabled");
-					panier.addToBasket(product);
+		ImageView imageView = new ImageView(getClass().getResource("../" + product.getImage()).toExternalForm());
+		imageView.setFitHeight(40);
+		imageView.setFitWidth(40);
+		gridPane.setAlignment(Pos.CENTER);
+		gridPane.add(imageView, 2, 0);
+		Label nameProduct = new Label("Name ");
+		Label brandProduct = new Label("Brand ");
+		Label priceProduct = new Label("Price ");
+		Label quantityProduct = new Label("Quantity ");
+		nameProduct.setId("labelProduct");
+		brandProduct.setId("labelProduct");
+		priceProduct.setId("labelProduct");
+		quantityProduct.setId("labelProduct");
+		gridPane.add(nameProduct, 0, 2);
+		gridPane.add(brandProduct, 1, 2);
+		gridPane.add(priceProduct, 2, 2);
+		gridPane.add(quantityProduct, 3, 2);
+		Label pname = new Label(product.getName());
+		gridPane.add(pname, 0, 5);
+		Label pbrand = new Label(product.getBrand());
+		gridPane.add(pbrand, 1, 5);
+		Label price = new Label("" + product.getPrice());
+		gridPane.add(price, 2, 5);
+		Label quantity = new Label("" + product.getQuantity());
+		gridPane.add(quantity, 3, 5);
+		pname.setId("infoProduct");
+		pbrand.setId("infoProduct");
+		quantity.setId("infoProduct");
+		price.setId("infoProduct");
+
+		// ajouter panier
+		Button achat = new Button("add to basket");
+		achat.setId("buttonOrange");
+		gridPane.add(achat, 1, 8);
+		Button pay = new Button("Go to checkout");
+		pay.setId("buttonOrange");
+		gridPane.add(pay, 2, 8);
+		// add product into basket
+		achat.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				achat.setDisable(true);
+				achat.setId("disabled");
+				panier.addToBasket(product);
+			}
+		});
+		// Go to basket
+		pay.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				GoCheckout check = new GoCheckout(panier, files, user);
+				try {
+					check.start(new Stage());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			});
-			// Go to basket
-			pay.setOnAction(new EventHandler<ActionEvent>() {
-				
-				@Override
-				public void handle(ActionEvent arg0) {
-					// TODO Auto-generated method stub
-					GoCheckout check=new GoCheckout(panier,files,user);
-					try {
-						check.start(new Stage());
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					primaryStage.hide();
-				}
-			});
-				// Adding BorderPane to the scene and loading CSS
+				primaryStage.hide();
+			}
+		});
+		// Adding BorderPane to the scene and loading CSS
 		Scene scene = new Scene(bp);
-		if(files.size()==1) {
+		if (files.size() == 1) {
 			scene.getStylesheets().add(getClass().getClassLoader().getResource(files.get(0)).toExternalForm());
 
 		}
-		if(files.size()==2) {
+		if (files.size() == 2) {
 			String cssFile1 = this.getClass().getResource(files.get(0)).toExternalForm();
-		    String cssFile2 = this.getClass().getResource(files.get(1)).toExternalForm();
-		    scene.getStylesheets().addAll(cssFile1,cssFile2);
-		}		primaryStage.setScene(scene);
+			String cssFile2 = this.getClass().getResource(files.get(1)).toExternalForm();
+			scene.getStylesheets().addAll(cssFile1, cssFile2);
+		}
+		primaryStage.setScene(scene);
 		primaryStage.setTitle("Product Details");
 		primaryStage.show();
 

@@ -45,12 +45,13 @@ public class PagePrincipale extends Application {
 	public ArrayList<String> files;
 	public Panier panier;
 	public User user;
-	public PagePrincipale(ArrayList<String> files,User user) {
+
+	public PagePrincipale(ArrayList<String> files, User user) {
 		this.files = files;
 		// TODO Auto-generated constructor stub
 		products = new ArrayList<Product>();
 		panier = new Panier();
-		this.user=user;
+		this.user = user;
 
 	}
 
@@ -88,7 +89,7 @@ public class PagePrincipale extends Application {
 
 		// Adding text to HBox
 		hb.getChildren().add(text);
-		
+
 		// Add ID's to Nodes
 		bp.setId("bp");
 		gridPane.setId("root");
@@ -104,26 +105,19 @@ public class PagePrincipale extends Application {
 		femme.setId("listView");
 		femme.setValue("Femme");
 		gridPane.add(femme, 0, 0);
-		/*femme.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
-			
-			@Override
-			public ListCell<String> call(ListView<String> arg0) {
-				// TODO Auto-generated method stub
-				ListCell<String> articles=new ListCell<String>() {
-					@Override
-					public void updateItem(String string,boolean empty) {
-						if(femme.getValue().equals("Dress") || femme.getValue().equals("Bags") ||femme.getValue().equals("Shoes")|| femme.getValue().equals("Denim")) {
-							setTextFill(Color.BEIGE);
-						}
-						else {
-							setTextFill(Color.BLACK);
-						}
-					}
-				};
-				
-				return articles;
-			}
-		});*/
+		/*
+		 * femme.setCellFactory(new Callback<ListView<String>, ListCell<String>>() {
+		 * 
+		 * @Override public ListCell<String> call(ListView<String> arg0) { // TODO
+		 * Auto-generated method stub ListCell<String> articles=new ListCell<String>() {
+		 * 
+		 * @Override public void updateItem(String string,boolean empty) {
+		 * if(femme.getValue().equals("Dress") || femme.getValue().equals("Bags")
+		 * ||femme.getValue().equals("Shoes")|| femme.getValue().equals("Denim")) {
+		 * setTextFill(Color.BEIGE); } else { setTextFill(Color.BLACK); } } };
+		 * 
+		 * return articles; } });
+		 */
 
 		// choix Produits Homme
 		ComboBox<String> homme = new ComboBox<String>();
@@ -289,7 +283,6 @@ public class PagePrincipale extends Application {
 			}
 
 		});
-		
 
 		// Creating the check boxes
 		CheckBox fnak = new CheckBox("Fnak");
@@ -332,29 +325,27 @@ public class PagePrincipale extends Application {
 			}
 		});
 		amazon.setOnAction(new EventHandler<ActionEvent>() {
-		@Override
+			@Override
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-			AmazingAPI api=new AmazingAPI();
-			api.parseData();
-			ArrayList<Product> l=api.getProducts();
-			products.addAll(l);
-			addProducts(products, gridPane);
+				AmazingAPI api = new AmazingAPI();
+				api.parseData();
+				ArrayList<Product> l = api.getProducts();
+				products.addAll(l);
+				addProducts(products, gridPane);
 
-				
 			}
 		});
 		fnak.setOnAction(new EventHandler<ActionEvent>() {
-		@Override
+			@Override
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
-			FnakAPI api=new FnakAPI();
-			api.parseData();
-			ArrayList<Product> l=api.getProducts();
-			products.addAll(l);
-			addProducts(products, gridPane);
+				FnakAPI api = new FnakAPI();
+				api.parseData();
+				ArrayList<Product> l = api.getProducts();
+				products.addAll(l);
+				addProducts(products, gridPane);
 
-				
 			}
 		});
 		// get textfield when selecting local
@@ -368,7 +359,7 @@ public class PagePrincipale extends Application {
 				ArrayList<Product> p = new ArrayList<Product>();
 				p = request.getProductsMotCles(research);
 				products.addAll(p);
-				//addProducts(products, gridPane);
+				// addProducts(products, gridPane);
 
 			}
 		});
@@ -414,7 +405,7 @@ public class PagePrincipale extends Application {
 			for (int i = 0; i < products.size(); i++) {
 				int cpt = 0;
 				Product p = products.get(i);
-				System.out.println(p.getName()+"  hello   ");
+				System.out.println(p.getName() + "  hello   ");
 				ImageView imageview = new ImageView(getClass().getResource("../" + p.getImage()).toExternalForm());
 				imageview.setFitHeight(30);
 				imageview.setFitWidth(30);
@@ -434,7 +425,7 @@ public class PagePrincipale extends Application {
 				gridPane.add(quantity, cpt + 3, 9 + i);
 				gridPane.add(imageview, cpt + 4, 9 + i);
 				imageview.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-					DetailedProduct detailedproduct = new DetailedProduct(p, files, panier,user);
+					DetailedProduct detailedproduct = new DetailedProduct(p, files, panier, user);
 					try {
 						detailedproduct.start(new Stage());
 					} catch (Exception e) {

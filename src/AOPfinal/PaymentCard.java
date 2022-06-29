@@ -8,7 +8,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
-public class PaymentCard extends Paiment{
+public class PaymentCard extends Paiment {
 	public void pay(GridPane gridPane, int l) {
 		Text info = new Text(" Card Information");
 		info.setId("labelTitle");
@@ -24,7 +24,7 @@ public class PaymentCard extends Paiment{
 		numCard.setId("label");
 		expiryDate.setId("label");
 		ccv.setId("label");
-		gridPane.add(info, 0, l+2);
+		gridPane.add(info, 0, l + 2);
 		gridPane.add(nomCarte, 0, l + 4);
 		gridPane.add(nom, 1, l + 4);
 		gridPane.add(numCard, 0, l + 7);

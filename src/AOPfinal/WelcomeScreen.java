@@ -34,34 +34,33 @@ import javafx.stage.Stage;
 
 public class WelcomeScreen extends Application {
 	public String filecss;
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		
 		primaryStage.setTitle("Shop welcome screen");
 		primaryStage.getIcons().add(new Image("logo.jpg"));
 
 		BorderPane bp = new BorderPane();
 		bp.setPadding(new Insets(10, 50, 50, 50));
 		// Adding HBox
-				HBox hb = new HBox();
-				hb.setPadding(new Insets(20, 20, 20, 30));
+		HBox hb = new HBox();
+		hb.setPadding(new Insets(20, 20, 20, 30));
 		// Adding GridPane
 		GridPane gridPane = new GridPane();
 		gridPane.setPadding(new Insets(10, 10, 10, 10));
 		gridPane.setHgap(30);
 		gridPane.setVgap(1);
-		//choix layout
-		
-		
-		// Implementing Nodes for GridPane
-         ImageView imageDecline1 = new ImageView("fleche.png");
-         ImageView imageDecline2 = new ImageView("fleche.png");
-         ImageView imageDecline3 = new ImageView("fleche.png");
+		// choix layout
 
-		Button btnLogin = new Button("Sign in",imageDecline1);
-		Button btnsubscribe = new Button("Sign up",imageDecline2);
-		Button btncontact = new Button("Contact us",imageDecline3);
+		// Implementing Nodes for GridPane
+		ImageView imageDecline1 = new ImageView("fleche.png");
+		ImageView imageDecline2 = new ImageView("fleche.png");
+		ImageView imageDecline3 = new ImageView("fleche.png");
+
+		Button btnLogin = new Button("Sign in", imageDecline1);
+		Button btnsubscribe = new Button("Sign up", imageDecline2);
+		Button btncontact = new Button("Contact us", imageDecline3);
 		imageDecline1.setFitHeight(20);
 		imageDecline1.setFitWidth(20);
 		imageDecline2.setFitHeight(20);
@@ -89,7 +88,7 @@ public class WelcomeScreen extends Application {
 
 		// Adding text and DropShadow effect to it
 		Text text = new Text("Welcome to your shopping application");
-	
+
 		// Add ID's to Nodes
 		bp.setId("bp");
 		gridPane.setId("root");
@@ -156,7 +155,7 @@ public class WelcomeScreen extends Application {
 
 		// Adding BorderPane to the scene and loading CSS
 		Scene scene = new Scene(bp);
-		filecss="login.css";
+		filecss = "login.css";
 		scene.getStylesheets().add(getClass().getClassLoader().getResource(filecss).toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.setHeight(250);
