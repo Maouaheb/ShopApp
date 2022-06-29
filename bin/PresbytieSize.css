@@ -1,0 +1,110 @@
+
+#buttonImage {
+	-fx-background-size: 200px 200px;
+}
+
+#imageview {
+	-fx-width: 800;
+	-fx-height: 250;
+}
+#bp {
+	-fx-width: 80;
+	-fx-font-size: 25px;
+}
+
+#btnLogin {
+	-fx-width: 80;
+	-fx-font-size: 25px;
+	
+}
+
+#btnsubscribe{
+	-fx-width: 80;
+	-fx-font-size: 25px;
+}
+
+#btncontact{
+	-fx-width: 80;
+	-fx-font-size: 25px;
+}
+#btnconfirm {
+    -fx-width: 100;
+	-fx-font-size: 30px;
+       
+}
+#textCard{
+ 	-fx-font: 100px Tahoma;
+    -fx-fill: linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);
+    -fx-stroke: black;
+    -fx-stroke-width: 1;}
+#text{
+	
+	-fx-font-size: 70px;
+}
+
+#label{
+	-fx-font-size: 35px;
+	-fx-font-weight: bold;
+}
+#labelProduct{
+ 	-fx-font-size: 35px;
+    -fx-font-weight: bold;
+ 	
+ }
+
+ #infoProduct{
+ 	-fx-font-size: 25px;
+    
+ }
+#labelTitle{
+	-fx-font-size: 50px;
+	
+}
+#textSearch {
+	-fx-font-size: 30px;
+}
+
+#buttonOrange {
+	-fx-width: 80;
+	-fx-font-size: 25;
+}
+
+#button {
+		-fx-width: 80;
+	-fx-font-size: 25;
+}
+
+#buttonSecondaire {
+	-fx-width: 80;
+	-fx-font-size: 25;
+}
+
+#buttonCombobox {
+	-fx-width: 80;
+	-fx-font-size: 25;
+	
+}
+
+#checkbox {
+	-fx-font-size: 25px;
+	-fx-width: 170;
+	
+}
+#checkbox .box{
+	-fx-border-width: 2 2 2 2;
+	-fx-background-radius: 30.0, 30.0, 29.0, 28.0;
+	-fx-padding: 3.0px 10.0px 3.0px 10.0px;	
+	-fx-pref-height: 30;
+    -fx-pref-width: 30;
+    -fx-border-radius: 5.0;
+    
+   
+    
+	
+}
+
+
+#listView {
+-fx-width: 80;
+-fx-font-size: 25;
+}

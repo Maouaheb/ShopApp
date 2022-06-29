@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="legendautolayout" value="true"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="bizz">
+			<or mandatory="true" name="Personne">
+				<feature name="Disability"/>
+				<feature name="young"/>
+			</or>
+			<alt mandatory="true" name="BD">
+				<alt name="SGBD">
+					<feature name="H2"/>
+					<feature name="MySQL"/>
+				</alt>
+				<feature name="Cloud"/>
+			</alt>
+			<alt mandatory="true" name="Shop">
+				<feature name="local"/>
+				<feature name="Fnak"/>
+				<feature name="Anonym"/>
+			</alt>
+			<alt mandatory="true" name="standalone">
+				<feature name="Desktop"/>
+				<feature name="Web"/>
+			</alt>
+			<alt name="Pay">
+				<feature name="Card"/>
+				<feature name="Paypal"/>
+			</alt>
+		</and>
+	</struct>
+</featureModel>
