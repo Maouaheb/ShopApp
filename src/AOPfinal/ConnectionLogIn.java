@@ -12,12 +12,15 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
 public class ConnectionLogIn {
+	String db="jdbc:mysql://localhost:3306/swing_demo";
+	String username="root";
+	String pwd="root";
+			
 	public boolean getConnection(String userName, String password, Label lblMessage, User user) {
 		boolean result = false;
 		boolean colorblind = false;
 		try {
-			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/swing_demo",
-					"root", "root");
+			Connection connection = (Connection) DriverManager.getConnection(db,username,pwd);
 
 			PreparedStatement st = (PreparedStatement) connection.prepareStatement(
 					"Select id, name, password, handicap, colorblind, presbytie, date from user where name=? and password=?");
@@ -70,8 +73,7 @@ public class ConnectionLogIn {
 		User user = new User();
 
 		try {
-			Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/swing_demo",
-					"root", "root");
+			Connection connection = (Connection) DriverManager.getConnection(db,username,pwd);
 
 			PreparedStatement st = (PreparedStatement) connection.prepareStatement(
 					"insert into user (name, password,handicap,colorblind,presbytie, date) values (?, ?, ?, ?, ?, ?)");
@@ -106,8 +108,7 @@ public class ConnectionLogIn {
 		Connection connection;
 		ArrayList<Product> products = new ArrayList<Product>();
 		try {
-			connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/swing_demo", "root",
-					"root");
+			connection = (Connection) DriverManager.getConnection(db,username,pwd);
 			PreparedStatement st = (PreparedStatement) connection
 					.prepareStatement("Select id, name, type, brand, price, quantity, image from items where type=?");
 			st.setString(1, type);
@@ -136,8 +137,7 @@ public class ConnectionLogIn {
 		Connection connection;
 		ArrayList<Product> products = new ArrayList<Product>();
 		try {
-			connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/swing_demo", "root",
-					"root");
+			connection = (Connection) DriverManager.getConnection(db,username,pwd);
 			PreparedStatement st = (PreparedStatement) connection
 					.prepareStatement("Select id, type, brand, price, quantity, image from items where name=?");
 			st.setString(1, name);
@@ -164,8 +164,7 @@ public class ConnectionLogIn {
 	public void updateProduct(Product p) {
 		Connection connection;
 		try {
-			connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/swing_demo", "root",
-					"root");
+			connection = (Connection) DriverManager.getConnection(db,username,pwd);
 			PreparedStatement st = (PreparedStatement) connection
 					.prepareStatement("update items set quantity=? where id=?");
 			int id = p.getId();
